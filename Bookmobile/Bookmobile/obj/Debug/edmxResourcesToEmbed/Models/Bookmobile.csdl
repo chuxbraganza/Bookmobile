@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookmobileModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LibraryStaff">
+    <Key>
+      <PropertyRef Name="StaffId" />
+    </Key>
+    <Property Name="StaffId" Type="Int32" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Outreaches" Relationship="Self.FK_Outreaches_LibraryStaff" FromRole="LibraryStaff" ToRole="Outreaches" />
+  </EntityType>
+  <EntityType Name="Outreach">
+    <Key>
+      <PropertyRef Name="OutreachId" />
+    </Key>
+    <Property Name="OutreachId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="SchoolId" Type="Int32" Nullable="false" />
+    <Property Name="StartTime" Type="Time" Precision="7" />
+    <Property Name="EndTime" Type="Time" Precision="7" />
+    <Property Name="StaffIdPrimary" Type="Int32" Nullable="false" />
+    <Property Name="StaffIdSecondary" Type="Int32" />
+    <Property Name="Notes" Type="String" MaxLength="144" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="LibraryStaff" Relationship="Self.FK_Outreaches_LibraryStaff" FromRole="Outreaches" ToRole="LibraryStaff" />
+    <NavigationProperty Name="School" Relationship="Self.FK_Outreaches_Schools" FromRole="Outreaches" ToRole="Schools" />
+  </EntityType>
+  <EntityType Name="School">
+    <Key>
+      <PropertyRef Name="SchoolId" />
+    </Key>
+    <Property Name="SchoolId" Type="Int32" Nullable="false" />
+    <Property Name="SchoolName" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Zip" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ContactLastName" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+    <Property Name="ContactFirstName" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+    <Property Name="AssociatedLibrary" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="HasService" Type="Boolean" Nullable="false" />
+    <Property Name="Notes" Type="String" MaxLength="144" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Outreaches" Relationship="Self.FK_Outreaches_Schools" FromRole="Schools" ToRole="Outreaches" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Outreaches_LibraryStaff">
+    <End Role="LibraryStaff" Type="Self.LibraryStaff" Multiplicity="1" />
+    <End Role="Outreaches" Type="Self.Outreach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LibraryStaff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="Outreaches">
+        <PropertyRef Name="StaffIdPrimary" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Outreaches_Schools">
+    <End Role="Schools" Type="Self.School" Multiplicity="1" />
+    <End Role="Outreaches" Type="Self.Outreach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schools">
+        <PropertyRef Name="SchoolId" />
+      </Principal>
+      <Dependent Role="Outreaches">
+        <PropertyRef Name="SchoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BookmobileEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LibraryStaffs" EntityType="Self.LibraryStaff" />
+    <EntitySet Name="Outreaches" EntityType="Self.Outreach" />
+    <EntitySet Name="Schools" EntityType="Self.School" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Outreaches_LibraryStaff" Association="Self.FK_Outreaches_LibraryStaff">
+      <End Role="LibraryStaff" EntitySet="LibraryStaffs" />
+      <End Role="Outreaches" EntitySet="Outreaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Outreaches_Schools" Association="Self.FK_Outreaches_Schools">
+      <End Role="Schools" EntitySet="Schools" />
+      <End Role="Outreaches" EntitySet="Outreaches" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
