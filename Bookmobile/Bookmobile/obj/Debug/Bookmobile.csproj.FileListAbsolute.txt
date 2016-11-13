@@ -80,3 +80,4 @@ C:\Users\chxbrg\Source\Repos\Bookmobile\Bookmobile\Bookmobile\bin\Microsoft.Owin
 C:\Users\chxbrg\Source\Repos\Bookmobile\Bookmobile\Bookmobile\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\chxbrg\Source\Repos\Bookmobile\Bookmobile\Bookmobile\obj\Debug\Bookmobile.dll
 C:\Users\chxbrg\Source\Repos\Bookmobile\Bookmobile\Bookmobile\obj\Debug\Bookmobile.pdb
+C:\Users\chxbrg\Source\Repos\Bookmobile\Bookmobile\Bookmobile\obj\Debug\Bookmobile.csprojResolveAssemblyReference.cache
