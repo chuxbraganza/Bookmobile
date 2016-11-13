@@ -1,13 +1,17 @@
 ﻿@model IEnumerable<Bookmobile.Models.LibraryStaff>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Staff Directory";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Return to Main", "Index", "Home")
+</p>
+<p>
+    <input type="button" class="btn btn-info" value="Add New Staff" onclick="location.href='@Url.Action("Create", "LibraryStaffs")'" />
+    
 </p>
 <table class="table">
     <tr>
@@ -48,6 +52,11 @@
     </tr>
 }
 
+  
+
 </table>
+<div>   
+    @Html.ActionLink("Return to Main", "Index", "Home")
+</div>
 
 

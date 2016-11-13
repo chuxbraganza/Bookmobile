@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
 namespace Bookmobile.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class LibraryStaff
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +23,11 @@ namespace Bookmobile.Models
         }
     
         public int StaffId { get; set; }
+
+        [DisplayName("Last Name")]
         public string LastName { get; set; }
+
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
