@@ -7,3 +7,4 @@ My Code Louisville C# and ASP.Net Project. This web app is designed to allow lib
 Prerequisites include Visual Studio and SQL Server. The reviewer only needs to download, compile and run the solution from Visual Studio. 
 
 The default username and password for the database is 'test'.
+Presently, the Staff portion of the website is functional. The Outreaches and Schools portions need to be worked on.
