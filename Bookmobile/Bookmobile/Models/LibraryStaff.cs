@@ -13,6 +13,7 @@ namespace Bookmobile.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class LibraryStaff
     {
@@ -29,7 +30,13 @@ namespace Bookmobile.Models
 
         [DisplayName("First Name")]
         public string FirstName { get; set; }
+
+        [DataType(DataType.EmailAddress, ErrorMessage = "Please enter a valid email address.")]
+        [RegularExpression("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$", ErrorMessage = "You must provide a valid email address.")]
         public string Email { get; set; }
+
+        [DataType(DataType.PhoneNumber, ErrorMessage = "You must provide a proper phone number. Ex: 5029999999.")]
+        [RegularExpression("^\\D?(\\d{3})\\D?\\D?(\\d{3})\\D?(\\d{4})$", ErrorMessage = "You must provide a proper phone number.Ex: 5029999999")]
         public string Phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
