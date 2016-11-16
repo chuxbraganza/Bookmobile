@@ -22,10 +22,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
-            <th>
+            <th class="hidden-xs">
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th>
+            <th class="hidden-xs">
                 @Html.DisplayNameFor(model => model.Phone)
             </th>
             <th></th>
@@ -40,10 +40,10 @@
                 <td class="col-md-1">
                     @Html.DisplayFor(modelItem => item.FirstName)
                 </td>
-                <td class="col-md-2">
+                <td class="col-md-2 hidden-xs">
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
-                <td class="col-md-2">
+                <td class="col-md-2 hidden-xs">
                     @Html.DisplayFor(modelItem => item.Phone)
                 </td>
                 <td class="col-md-6">
